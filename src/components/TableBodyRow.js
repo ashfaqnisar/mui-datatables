@@ -9,14 +9,10 @@ const classes = {
   root: `${PREFIX}-root`,
   hoverCursor: `${PREFIX}-hoverCursor`,
   responsiveStacked: `${PREFIX}-responsiveStacked`,
-  responsiveSimple: `${PREFIX}-responsiveSimple`
+  responsiveSimple: `${PREFIX}-responsiveSimple`,
 };
 
-const StyledTableRow = styled(TableRow)((
-  {
-    theme
-  }
-) => ({
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
   [`&.${classes.root}`]: {
     // material v4
     '&.Mui-selected': {
@@ -47,7 +43,7 @@ const StyledTableRow = styled(TableRow)((
       padding: 0,
       margin: 0,
     },
-  }
+  },
 }));
 
 class TableBodyRow extends React.Component {
@@ -63,7 +59,7 @@ class TableBodyRow extends React.Component {
   };
 
   render() {
-    const {  options, rowSelected, onClick, className, isRowSelectable, ...rest } = this.props;
+    const { options, rowSelected, onClick, className, isRowSelectable, ...rest } = this.props;
 
     var methods = {};
     if (onClick) {
@@ -96,4 +92,4 @@ class TableBodyRow extends React.Component {
   }
 }
 
-export default (TableBodyRow);
+export default TableBodyRow;

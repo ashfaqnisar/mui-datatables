@@ -26,7 +26,6 @@ import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { load, save } from './localStorage';
 
-
 const PREFIX = 'MUIDataTable';
 
 const classes = {
@@ -44,7 +43,7 @@ const classes = {
   liveAnnounce: `${PREFIX}-liveAnnounce`,
 };
 
-const StyledMuiTable = styled(Paper)(({theme}) => ({
+const StyledMuiTable = styled(Paper)(({ theme }) => ({
   [`& .${classes.root}`]: {},
   [`& .${classes.paper}`]: {},
   [`& .${classes.paperResponsiveScrollFullHeightFullWidth}`]: {
@@ -107,7 +106,6 @@ const StyledMuiTable = styled(Paper)(({theme}) => ({
     },
   },
 }));
-
 
 const defaultTableStyles = theme => ({
   root: {},
@@ -2167,5 +2165,4 @@ class MUIDataTable extends React.Component {
   }
 }
 
-export default (MUIDataTable);
-
+export default MUIDataTable;

@@ -11,14 +11,10 @@ const classes = {
   main: `${PREFIX}-main`,
   searchIcon: `${PREFIX}-searchIcon`,
   searchText: `${PREFIX}-searchText`,
-  clearIcon: `${PREFIX}-clearIcon`
+  clearIcon: `${PREFIX}-clearIcon`,
 };
 
-const StyledGrow = styled(Grow)((
-  {
-    theme
-  }
-) => ({
+const StyledGrow = styled(Grow)(({ theme }) => ({
   [`& .${classes.main}`]: {
     display: 'flex',
     flex: '1 0 auto',
@@ -38,12 +34,10 @@ const StyledGrow = styled(Grow)((
     '&:hover': {
       color: theme.palette.error.main,
     },
-  }
+  },
 }));
 
 const TableSearch = ({ options, searchText, onSearch, onHide }) => {
-
-
   const handleTextChange = event => {
     onSearch(event.target.value);
   };

@@ -11,16 +11,10 @@ const classes = {
   main: `${PREFIX}-main`,
   searchIcon: `${PREFIX}-searchIcon`,
   searchText: `${PREFIX}-searchText`,
-  clearIcon: `${PREFIX}-clearIcon`
+  clearIcon: `${PREFIX}-clearIcon`,
 };
 
-const StyledDebounceTableSearch
- = styled(DebounceTableSearch
-)((
-  {
-    theme
-  }
-) => ({
+const StyledDebounceTableSearch = styled(DebounceTableSearch)(({ theme }) => ({
   [`& .${classes.main}`]: {
     display: 'flex',
     flex: '1 0 auto',
@@ -40,7 +34,7 @@ const StyledDebounceTableSearch
     '&:hover': {
       color: theme.palette.error.main,
     },
-  }
+  },
 }));
 
 function debounce(func, wait, immediate) {
@@ -81,7 +75,7 @@ class _DebounceTableSearch extends React.Component {
   };
 
   render() {
-    const {  options, onHide, searchText, debounceWait } = this.props;
+    const { options, onHide, searchText, debounceWait } = this.props;
 
     const debouncedSearch = debounce(value => {
       this.props.onSearch(value);
