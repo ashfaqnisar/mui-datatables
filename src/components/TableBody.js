@@ -235,7 +235,6 @@ class TableBody extends React.Component {
 
   render() {
     const {
-      classes,
       columns,
       toggleExpandRow,
       options,
