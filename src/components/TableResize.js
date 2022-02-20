@@ -1,6 +1,7 @@
 import React from 'react';
 import { styled } from '@mui/material/styles';
 import PropTypes from 'prop-types';
+
 const PREFIX = 'MUIDataTableResize';
 
 const classes = {

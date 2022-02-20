@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import FormControl from '@mui/material/FormControl';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
+
 const PREFIX = 'MUIDataTableViewCol';
 
 const classes = {

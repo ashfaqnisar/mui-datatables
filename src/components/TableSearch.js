@@ -5,6 +5,7 @@ import TextField from '@mui/material/TextField';
 import SearchIcon from '@mui/icons-material/Search';
 import IconButton from '@mui/material/IconButton';
 import ClearIcon from '@mui/icons-material/Clear';
+
 const PREFIX = 'MUIDataTableSearch';
 
 const classes = {
