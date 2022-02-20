@@ -1,48 +1,58 @@
 import React, { useCallback } from 'react';
+import { styled } from '@mui/material/styles';
 import clsx from 'clsx';
 import TableCell from '@mui/material/TableCell';
-import { makeStyles } from '@mui/styles';
+const PREFIX = 'MUIDataTableBodyCell';
 
-const useStyles = makeStyles(
-  theme => ({
-    root: {},
-    cellHide: {
-      display: 'none',
+const classes = {
+  root: `${PREFIX}-root`,
+  cellHide: `${PREFIX}-cellHide`,
+  simpleHeader: `${PREFIX}-simpleHeader`,
+  simpleCell: `${PREFIX}-simpleCell`,
+  stackedHeader: `${PREFIX}-stackedHeader`,
+  stackedCommon: `${PREFIX}-stackedCommon`,
+  stackedCommonAlways: `${PREFIX}-stackedCommonAlways`,
+  stackedParent: `${PREFIX}-stackedParent`,
+  stackedParentAlways: `${PREFIX}-stackedParentAlways`,
+  cellStackedSmall: `${PREFIX}-cellStackedSmall`,
+  responsiveStackedSmall: `${PREFIX}-responsiveStackedSmall`,
+  responsiveStackedSmallParent: `${PREFIX}-responsiveStackedSmallParent`
+};
+
+const StyledTableCell = styled(TableCell)((
+  {
+    theme
+  }
+) => ({
+  [`&.${classes.root}`]: {},
+
+  [`& .${classes.cellHide}`]: {
+    display: 'none',
+  },
+
+  [`& .${classes.simpleHeader}`]: {
+    [theme.breakpoints.down('sm')]: {
+      display: 'inline-block',
+      fontWeight: 'bold',
+      width: '100%',
+      boxSizing: 'border-box',
     },
-    simpleHeader: {
-      [theme.breakpoints.down('sm')]: {
-        display: 'inline-block',
-        fontWeight: 'bold',
-        width: '100%',
-        boxSizing: 'border-box',
-      },
+  },
+
+  [`&.${classes.simpleCell}`]: {
+    [theme.breakpoints.down('sm')]: {
+      display: 'inline-block',
+      width: '100%',
+      boxSizing: 'border-box',
     },
-    simpleCell: {
-      [theme.breakpoints.down('sm')]: {
-        display: 'inline-block',
-        width: '100%',
-        boxSizing: 'border-box',
-      },
-    },
-    stackedHeader: {
-      verticalAlign: 'top',
-    },
-    stackedCommon: {
-      [theme.breakpoints.down('md')]: {
-        display: 'inline-block',
-        fontSize: '16px',
-        height: 'auto',
-        width: 'calc(50%)',
-        boxSizing: 'border-box',
-        '&:last-child': {
-          borderBottom: 'none',
-        },
-        '&:nth-last-child(2)': {
-          borderBottom: 'none',
-        },
-      },
-    },
-    stackedCommonAlways: {
+  },
+
+  [`& .${classes.stackedHeader}`]: {
+    verticalAlign: 'top',
+  },
+
+  [`& .${classes.stackedCommon}`]: {
+    [theme.breakpoints.down('md')]: {
       display: 'inline-block',
       fontSize: '16px',
       height: 'auto',
@@ -55,46 +65,64 @@ const useStyles = makeStyles(
         borderBottom: 'none',
       },
     },
-    stackedParent: {
-      [theme.breakpoints.down('md')]: {
-        display: 'inline-block',
-        fontSize: '16px',
-        height: 'auto',
-        width: 'calc(100%)',
-        boxSizing: 'border-box',
-      },
+  },
+
+  [`& .${classes.stackedCommonAlways}`]: {
+    display: 'inline-block',
+    fontSize: '16px',
+    height: 'auto',
+    width: 'calc(50%)',
+    boxSizing: 'border-box',
+    '&:last-child': {
+      borderBottom: 'none',
     },
-    stackedParentAlways: {
+    '&:nth-last-child(2)': {
+      borderBottom: 'none',
+    },
+  },
+
+  [`&.${classes.stackedParent}`]: {
+    [theme.breakpoints.down('md')]: {
       display: 'inline-block',
       fontSize: '16px',
       height: 'auto',
       width: 'calc(100%)',
       boxSizing: 'border-box',
     },
-    cellStackedSmall: {
-      [theme.breakpoints.down('md')]: {
-        width: '50%',
-        boxSizing: 'border-box',
-      },
+  },
+
+  [`&.${classes.stackedParentAlways}`]: {
+    display: 'inline-block',
+    fontSize: '16px',
+    height: 'auto',
+    width: 'calc(100%)',
+    boxSizing: 'border-box',
+  },
+
+  [`& .${classes.cellStackedSmall}`]: {
+    [theme.breakpoints.down('md')]: {
+      width: '50%',
+      boxSizing: 'border-box',
     },
-    responsiveStackedSmall: {
-      [theme.breakpoints.down('md')]: {
-        width: '50%',
-        boxSizing: 'border-box',
-      },
+  },
+
+  [`& .${classes.responsiveStackedSmall}`]: {
+    [theme.breakpoints.down('md')]: {
+      width: '50%',
+      boxSizing: 'border-box',
     },
-    responsiveStackedSmallParent: {
-      [theme.breakpoints.down('md')]: {
-        width: '100%',
-        boxSizing: 'border-box',
-      },
+  },
+
+  [`&.${classes.responsiveStackedSmallParent}`]: {
+    [theme.breakpoints.down('md')]: {
+      width: '100%',
+      boxSizing: 'border-box',
     },
-  }),
-  { name: 'MUIDataTableBodyCell' },
-);
+  }
+}));
 
 function TableBodyCell(props) {
-  const classes = useStyles();
+
   const {
     children,
     colIndex,
@@ -180,7 +208,7 @@ function TableBodyCell(props) {
   }
 
   return (
-    <TableCell
+    <StyledTableCell
       {...methods}
       data-colindex={colIndex}
       data-tableid={tableId}
@@ -204,7 +232,7 @@ function TableBodyCell(props) {
       )}
       {...otherProps}>
       {innerCells}
-    </TableCell>
+    </StyledTableCell>
   );
 }
 

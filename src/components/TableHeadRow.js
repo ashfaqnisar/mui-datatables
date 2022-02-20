@@ -1,26 +1,28 @@
 import React from 'react';
+import { styled } from '@mui/material/styles';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import TableRow from '@mui/material/TableRow';
-import { makeStyles } from '@mui/styles';
+const PREFIX = 'MUIDataTableHeadRow';
 
-const useStyles = makeStyles(
-  () => ({
-    root: {},
-  }),
-  { name: 'MUIDataTableHeadRow' },
-);
+const classes = {
+  root: `${PREFIX}-root`
+};
+
+const StyledTableRow = styled(TableRow)(() => ({
+  [`&.${classes.root}`]: {}
+}));
 
 const TableHeadRow = ({ children }) => {
-  const classes = useStyles();
+
 
   return (
-    <TableRow
+    <StyledTableRow
       className={clsx({
         [classes.root]: true,
       })}>
       {children}
-    </TableRow>
+    </StyledTableRow>
   );
 };
 

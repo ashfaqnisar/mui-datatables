@@ -1,22 +1,27 @@
-import { makeStyles } from '@mui/styles';
+import { styled } from '@mui/material/styles';
 import PropTypes from 'prop-types';
 import React from 'react';
 import TableFilterListItem from './TableFilterListItem';
 
-const useStyles = makeStyles(
-  () => ({
-    root: {
-      display: 'flex',
-      justifyContent: 'left',
-      flexWrap: 'wrap',
-      margin: '0px 16px 0px 16px',
-    },
-    chip: {
-      margin: '8px 8px 0px 0px',
-    },
-  }),
-  { name: 'MUIDataTableFilterList' },
-);
+const PREFIX = 'MUIDataTableFilterList';
+
+const classes = {
+  root: `${PREFIX}-root`,
+  chip: `${PREFIX}-chip`
+};
+
+const Root = styled('div')(() => ({
+  [`&.${classes.root}`]: {
+    display: 'flex',
+    justifyContent: 'left',
+    flexWrap: 'wrap',
+    margin: '0px 16px 0px 16px',
+  },
+
+  [`& .${classes.chip}`]: {
+    margin: '8px 8px 0px 0px',
+  }
+}));
 
 const TableFilterList = ({
   options,
@@ -28,7 +33,7 @@ const TableFilterList = ({
   customFilterListUpdate,
   ItemComponent = TableFilterListItem,
 }) => {
-  const classes = useStyles();
+
   const { serverSide } = options;
 
   const removeFilter = (index, filterValue, columnName, filterType, customFilterListUpdate = null) => {
@@ -113,9 +118,9 @@ const TableFilterList = ({
   };
 
   return (
-    <div className={classes.root}>
+    <Root className={classes.root}>
       {serverSide && serverSideFilterList ? getFilterList(serverSideFilterList) : getFilterList(filterList)}
-    </div>
+    </Root>
   );
 };
 

@@ -1,4 +1,5 @@
 import Button from '@mui/material/Button';
+import { styled } from '@mui/material/styles';
 import clsx from 'clsx';
 import HelpIcon from '@mui/icons-material/Help';
 import MuiTooltip from '@mui/material/Tooltip';
@@ -7,64 +8,94 @@ import React, { useState } from 'react';
 import TableCell from '@mui/material/TableCell';
 import TableSortLabel from '@mui/material/TableSortLabel';
 import useColumnDrop from '../hooks/useColumnDrop.js';
-import { makeStyles } from '@mui/styles';
 import { useDrag } from 'react-dnd';
 
-const useStyles = makeStyles(
-  theme => ({
-    root: {},
-    fixedHeader: {
-      position: 'sticky',
-      top: '0px',
-      zIndex: 100,
-      backgroundColor: theme.palette.background.paper,
+const PREFIX = 'MUIDataTableHeadCell';
+
+const classes = {
+  root: `${PREFIX}-root`,
+  fixedHeader: `${PREFIX}-fixedHeader`,
+  tooltip: `${PREFIX}-tooltip`,
+  mypopper: `${PREFIX}-mypopper`,
+  data: `${PREFIX}-data`,
+  sortAction: `${PREFIX}-sortAction`,
+  dragCursor: `${PREFIX}-dragCursor`,
+  sortLabelRoot: `${PREFIX}-sortLabelRoot`,
+  sortActive: `${PREFIX}-sortActive`,
+  toolButton: `${PREFIX}-toolButton`,
+  contentWrapper: `${PREFIX}-contentWrapper`,
+  hintIconAlone: `${PREFIX}-hintIconAlone`,
+  hintIconWithSortIcon: `${PREFIX}-hintIconWithSortIcon`
+};
+
+const StyledTableCell = styled(TableCell)((
+  {
+    theme
+  }
+) => ({
+  [`& .${classes.root}`]: {},
+
+  [`& .${classes.fixedHeader}`]: {
+    position: 'sticky',
+    top: '0px',
+    zIndex: 100,
+    backgroundColor: theme.palette.background.paper,
+  },
+
+  [`& .${classes.tooltip}`]: {
+    cursor: 'pointer',
+  },
+
+  [`& .${classes.mypopper}`]: {
+    '&[data-x-out-of-boundaries]': {
+      display: 'none',
     },
-    tooltip: {
-      cursor: 'pointer',
-    },
-    mypopper: {
-      '&[data-x-out-of-boundaries]': {
-        display: 'none',
-      },
-    },
-    data: {
-      display: 'inline-block',
-    },
-    sortAction: {
-      display: 'flex',
-      cursor: 'pointer',
-    },
-    dragCursor: {
-      cursor: 'grab',
-    },
-    sortLabelRoot: {
-      height: '20px',
-    },
-    sortActive: {
-      color: theme.palette.text.primary,
-    },
-    toolButton: {
-      textTransform: 'none',
-      marginLeft: '-8px',
-      minWidth: 0,
-      marginRight: '8px',
-      paddingLeft: '8px',
-      paddingRight: '8px',
-    },
-    contentWrapper: {
-      display: 'flex',
-      alignItems: 'center',
-    },
-    hintIconAlone: {
-      marginTop: '-3px',
-      marginLeft: '3px',
-    },
-    hintIconWithSortIcon: {
-      marginTop: '-3px',
-    },
-  }),
-  { name: 'MUIDataTableHeadCell' },
-);
+  },
+
+  [`& .${classes.data}`]: {
+    display: 'inline-block',
+  },
+
+  [`& .${classes.sortAction}`]: {
+    display: 'flex',
+    cursor: 'pointer',
+  },
+
+  [`& .${classes.dragCursor}`]: {
+    cursor: 'grab',
+  },
+
+  [`& .${classes.sortLabelRoot}`]: {
+    height: '20px',
+  },
+
+  [`& .${classes.sortActive}`]: {
+    color: theme.palette.text.primary,
+  },
+
+  [`& .${classes.toolButton}`]: {
+    textTransform: 'none',
+    marginLeft: '-8px',
+    minWidth: 0,
+    marginRight: '8px',
+    paddingLeft: '8px',
+    paddingRight: '8px',
+  },
+
+  [`& .${classes.contentWrapper}`]: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+
+  [`& .${classes.hintIconAlone}`]: {
+    marginTop: '-3px',
+    marginLeft: '3px',
+  },
+
+  [`& .${classes.hintIconWithSortIcon}`]: {
+    marginTop: '-3px',
+  }
+}));
 
 const TableHeadCell = ({
   cellHeaderProps = {},
@@ -92,7 +123,7 @@ const TableHeadCell = ({
   const [sortTooltipOpen, setSortTooltipOpen] = useState(false);
   const [hintTooltipOpen, setHintTooltipOpen] = useState(false);
 
-  const classes = useStyles();
+
 
   const handleKeyboardSortInput = e => {
     if (e.key === 'Enter') {
@@ -192,7 +223,7 @@ const TableHeadCell = ({
   };
 
   return (
-    <TableCell
+    <StyledTableCell
       ref={ref => {
         drop && drop(ref);
         setCellRef && setCellRef(index + 1, colPosition + 1, ref);
@@ -267,7 +298,7 @@ const TableHeadCell = ({
           )}
         </div>
       )}
-    </TableCell>
+    </StyledTableCell>
   );
 };
 

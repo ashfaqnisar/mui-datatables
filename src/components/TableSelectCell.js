@@ -1,50 +1,73 @@
 import React from 'react';
+import { styled } from '@mui/material/styles';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import Checkbox from '@mui/material/Checkbox';
 import TableCell from '@mui/material/TableCell';
-import { makeStyles } from '@mui/styles';
 import ExpandButton from './ExpandButton';
 
-const useStyles = makeStyles(
-  theme => ({
-    root: {
-      '@media print': {
-        display: 'none',
-      },
-    },
-    fixedHeader: {
-      position: 'sticky',
-      top: '0px',
-      zIndex: 100,
-    },
-    fixedLeft: {
-      position: 'sticky',
-      left: '0px',
-      zIndex: 100,
-    },
-    icon: {
-      cursor: 'pointer',
-      transition: 'transform 0.25s',
-    },
-    expanded: {
-      transform: 'rotate(90deg)',
-    },
-    hide: {
-      visibility: 'hidden',
-    },
-    headerCell: {
-      zIndex: 110,
-      backgroundColor: theme.palette.background.paper,
-    },
-    expandDisabled: {},
-    checkboxRoot: {},
-    checked: {},
-    disabled: {},
-  }),
+const PREFIX = 'MUIDataTableSelectCell';
 
-  { name: 'MUIDataTableSelectCell' },
-);
+const classes = {
+  root: `${PREFIX}-root`,
+  fixedHeader: `${PREFIX}-fixedHeader`,
+  fixedLeft: `${PREFIX}-fixedLeft`,
+  icon: `${PREFIX}-icon`,
+  expanded: `${PREFIX}-expanded`,
+  hide: `${PREFIX}-hide`,
+  headerCell: `${PREFIX}-headerCell`,
+  expandDisabled: `${PREFIX}-expandDisabled`,
+  checkboxRoot: `${PREFIX}-checkboxRoot`,
+  checked: `${PREFIX}-checked`,
+  disabled: `${PREFIX}-disabled`
+};
+
+const StyledTableCell = styled(TableCell)((
+  {
+    theme
+  }
+) => ({
+  [`& .${classes.root}`]: {
+    '@media print': {
+      display: 'none',
+    },
+  },
+
+  [`& .${classes.fixedHeader}`]: {
+    position: 'sticky',
+    top: '0px',
+    zIndex: 100,
+  },
+
+  [`& .${classes.fixedLeft}`]: {
+    position: 'sticky',
+    left: '0px',
+    zIndex: 100,
+  },
+
+  [`& .${classes.icon}`]: {
+    cursor: 'pointer',
+    transition: 'transform 0.25s',
+  },
+
+  [`& .${classes.expanded}`]: {
+    transform: 'rotate(90deg)',
+  },
+
+  [`& .${classes.hide}`]: {
+    visibility: 'hidden',
+  },
+
+  [`& .${classes.headerCell}`]: {
+    zIndex: 110,
+    backgroundColor: theme.palette.background.paper,
+  },
+
+  [`& .${classes.expandDisabled}`]: {},
+  [`& .${classes.checkboxRoot}`]: {},
+  [`& .${classes.checked}`]: {},
+  [`& .${classes.disabled}`]: {}
+}));
 
 const TableSelectCell = ({
   fixedHeader,
@@ -66,7 +89,7 @@ const TableSelectCell = ({
   components = {},
   ...otherProps
 }) => {
-  const classes = useStyles();
+
   const CheckboxComponent = components.Checkbox || Checkbox;
   const ExpandButtonComponent = components.ExpandButton || ExpandButton;
 
@@ -124,7 +147,7 @@ const TableSelectCell = ({
   };
 
   return (
-    <TableCell className={cellClass} padding="checkbox" {...refProp}>
+    <StyledTableCell className={cellClass} padding="checkbox" {...refProp}>
       <div style={{ display: 'flex', alignItems: 'center' }}>
         {expandableOn && (
           <ExpandButtonComponent
@@ -141,7 +164,7 @@ const TableSelectCell = ({
         )}
         {selectableOn !== 'none' && selectableRowsHideCheckboxes !== true && renderCheckBox()}
       </div>
-    </TableCell>
+    </StyledTableCell>
   );
 };
 
