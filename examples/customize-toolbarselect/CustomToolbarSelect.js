@@ -1,19 +1,18 @@
-import React from "react";
-import IconButton from "@mui/material/IconButton";
-import Tooltip from "@mui/material/Tooltip";
-import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
-import IndeterminateCheckBoxIcon from "@mui/icons-material/IndeterminateCheckBox";
-import BlockIcon from "@mui/icons-material/Block";
-import { withStyles } from "@mui/styles";
+import React from 'react';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
+import IndeterminateCheckBoxIcon from '@mui/icons-material/IndeterminateCheckBox';
+import BlockIcon from '@mui/icons-material/Block';
+import { withStyles } from '@mui/styles';
 
 const defaultToolbarSelectStyles = {
-  iconButton: {
-  },
+  iconButton: {},
   iconContainer: {
-    marginRight: "24px",
+    marginRight: '24px',
   },
   inverseIcon: {
-    transform: "rotate(90deg)",
+    transform: 'rotate(90deg)',
   },
 };
 
@@ -43,17 +42,17 @@ class CustomToolbarSelect extends React.Component {
 
     return (
       <div className={classes.iconContainer}>
-        <Tooltip title={"Deselect ALL"}>
+        <Tooltip title={'Deselect ALL'}>
           <IconButton className={classes.iconButton} onClick={this.handleClickDeselectAll}>
             <IndeterminateCheckBoxIcon className={classes.icon} />
           </IconButton>
         </Tooltip>
-        <Tooltip title={"Inverse selection"}>
+        <Tooltip title={'Inverse selection'}>
           <IconButton className={classes.iconButton} onClick={this.handleClickInverseSelection}>
-            <CompareArrowsIcon className={[classes.icon, classes.inverseIcon].join(" ")} />
+            <CompareArrowsIcon className={[classes.icon, classes.inverseIcon].join(' ')} />
           </IconButton>
         </Tooltip>
-        <Tooltip title={"Block selected"}>
+        <Tooltip title={'Block selected'}>
           <IconButton className={classes.iconButton} onClick={this.handleClickBlockSelected}>
             <BlockIcon className={classes.icon} />
           </IconButton>
@@ -63,4 +62,4 @@ class CustomToolbarSelect extends React.Component {
   }
 }
 
-export default withStyles(defaultToolbarSelectStyles, { name: "CustomToolbarSelect" })(CustomToolbarSelect);
+export default withStyles(defaultToolbarSelectStyles, { name: 'CustomToolbarSelect' })(CustomToolbarSelect);

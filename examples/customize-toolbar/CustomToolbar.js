@@ -1,26 +1,24 @@
-import React from "react";
-import IconButton from "@mui/material/IconButton";
-import Tooltip from "@mui/material/Tooltip";
-import AddIcon from "@mui/icons-material/Add";
-import { withStyles } from "@mui/styles";
+import React from 'react';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+import AddIcon from '@mui/icons-material/Add';
+import { withStyles } from '@mui/styles';
 
 const defaultToolbarStyles = {
-  iconButton: {
-  },
+  iconButton: {},
 };
 
 class CustomToolbar extends React.Component {
-  
   handleClick = () => {
-    console.log("clicked on icon!");
-  }
+    console.log('clicked on icon!');
+  };
 
   render() {
     const { classes } = this.props;
 
     return (
       <React.Fragment>
-        <Tooltip title={"custom icon"}>
+        <Tooltip title={'custom icon'}>
           <IconButton className={classes.iconButton} onClick={this.handleClick}>
             <AddIcon className={classes.deleteIcon} />
           </IconButton>
@@ -28,7 +26,6 @@ class CustomToolbar extends React.Component {
       </React.Fragment>
     );
   }
-
 }
 
-export default withStyles(defaultToolbarStyles, { name: "CustomToolbar" })(CustomToolbar);
+export default withStyles(defaultToolbarStyles, { name: 'CustomToolbar' })(CustomToolbar);

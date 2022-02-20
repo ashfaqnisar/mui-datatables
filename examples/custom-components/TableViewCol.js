@@ -54,7 +54,7 @@ const TableViewCol = ({ columns, options, components = {}, onColumnUpdate, updat
   const selectAll = () => {
     var newColumns = columns.map(col => {
       var newCol = Object.assign({}, col);
-      newCol.display = "true";
+      newCol.display = 'true';
       return newCol;
     });
     updateColumns(newColumns);
@@ -66,7 +66,7 @@ const TableViewCol = ({ columns, options, components = {}, onColumnUpdate, updat
         {textLabels.title}
       </Typography>
       <FormGroup className={classes.formGroup}>
-      <Button onClick={selectAll}>Show All</Button>
+        <Button onClick={selectAll}>Show All</Button>
         {columns.map((column, index) => {
           return (
             column.display !== 'excluded' &&

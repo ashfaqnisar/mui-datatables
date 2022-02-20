@@ -1,6 +1,6 @@
 import React from 'react';
 import MUIDataTable from '../../src/';
-import { ThemeProvider, withStyles } from '@mui/styles';
+import { ThemeProvider, withStyles } from '@mui/material/styles';
 import { createTheme } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
 import FormGroup from '@mui/material/FormGroup';
@@ -89,7 +89,7 @@ class Example extends React.Component {
               }),
               style: {
                 //borderRight: '2px solid blue'
-              }
+              },
             };
           },
           setCellHeaderProps: value => {

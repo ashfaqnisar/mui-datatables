@@ -1,15 +1,13 @@
-import React from "react";
-import TableFooter from "@mui/material/TableFooter";
-import TableRow from "@mui/material/TableRow";
-import TableCell from "@mui/material/TableCell";
-import MuiTablePagination from "@mui/material/TablePagination";
-import { withStyles } from "@mui/styles";
+import React from 'react';
+import TableFooter from '@mui/material/TableFooter';
+import TableRow from '@mui/material/TableRow';
+import TableCell from '@mui/material/TableCell';
+import MuiTablePagination from '@mui/material/TablePagination';
+import { withStyles } from '@mui/styles';
 
-const defaultFooterStyles = {
-};
+const defaultFooterStyles = {};
 
 class CustomFooter extends React.Component {
-
   handleRowChange = event => {
     this.props.changeRowsPerPage(event.target.value);
   };
@@ -22,9 +20,9 @@ class CustomFooter extends React.Component {
     const { count, classes, textLabels, rowsPerPage, page } = this.props;
 
     const footerStyle = {
-      display:'flex', 
+      display: 'flex',
       justifyContent: 'flex-end',
-      padding: '0px 24px 0px 24px'
+      padding: '0px 24px 0px 24px',
     };
 
     return (
@@ -32,7 +30,7 @@ class CustomFooter extends React.Component {
         <TableRow>
           <TableCell style={footerStyle} colSpan={1000}>
             <button>Custom Option</button>
-          
+
             <MuiTablePagination
               component="div"
               count={count}
@@ -46,7 +44,7 @@ class CustomFooter extends React.Component {
               nextIconButtonProps={{
                 'aria-label': textLabels.next,
               }}
-              rowsPerPageOptions={[10,20,100]}
+              rowsPerPageOptions={[10, 20, 100]}
               onChangePage={this.handlePageChange}
               onChangeRowsPerPage={this.handleRowChange}
             />
@@ -55,7 +53,6 @@ class CustomFooter extends React.Component {
       </TableFooter>
     );
   }
-
 }
 
-export default withStyles(defaultFooterStyles, { name: "CustomFooter" })(CustomFooter);
+export default withStyles(defaultFooterStyles, { name: 'CustomFooter' })(CustomFooter);
